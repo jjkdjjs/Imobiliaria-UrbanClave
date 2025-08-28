@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lançamentos - UrbanClave</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .menu-lateral {
+            width: 250px;
+            background-color:#F6F8FF;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            overflow-y: auto;
+        }
+        .menu-lateral .logo img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .menu-lateral .busca {
+            width: 90%;
+            margin: 10px auto 20px auto;
+            display: block;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #333;
+            background-color: #fff;
+        }
+        .menu-lateral .busca::placeholder {
+            color: #888;
+        }
+        .menu-lateral ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .menu-lateral ul li {
+            position: relative;
+        }
+        .menu-lateral ul li:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            right: 10px;
+            height: 1px;
+            background-color: rgba(41, 112, 69, 0.2);
+        }
+        .menu-lateral ul li a {
+            display: block;
+            padding: 10px 15px;
+            color: #297045;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border-radius: 5px;
+        }
+        .menu-lateral ul li a:hover {
+            background-color: #81C14B;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        .conteudo {
+            margin-left: 250px;
+            padding: 30px;
+            flex: 1;
+        }
+        h1 {
+            color: #204E4A;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .secao-filtros {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .secao-filtros h4 {
+            color: #297045;
+        }
+        .linha {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .imoveis {
+            position: relative;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #297045;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(129, 193, 75, 0.3);
+        }
+        .imoveis:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(129, 193, 75, 0.5);
+        }
+        .imoveis-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        #imageModal .modal-body img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+        .info {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .botao {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #297045;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .botao:hover {
+            background-color: #204E4A;
+        }
+        .selo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff5733;
+            color: white;
+            padding: 5px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn-ver-mais {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 25px;
+            background-color: #81C14B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-ver-mais:hover {
+            background-color: #6da740;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .conteudo {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .menu-lateral {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding-bottom: 0;
+                align-items: center;
+            }
+            .menu-lateral ul {
+                width: auto;
+                margin-top: 15px;
+            }
+            .menu-lateral ul li a {
+                text-align: center;
+            }
+            .menu-lateral ul li:not(:last-child)::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+            }
+            .linha {
+                flex-direction: column;
+                align-items: center;
+            }
+            .imoveis {
+                width: 90%;
+            }
+            .secao-filtros {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <nav class="menu-lateral">
+        <div class="logo">
+            <img src="imagens/logo.png" alt="Foto da logo UrbanClave">
+        </div>
+        <input type="text" placeholder="Buscar imóvel..." class="busca" id="campo-busca">
+
+        <ul>
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="imobiliari.html">Lançamentos</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Negocie seus imóveis</a></li>
+            <li><a href="#">Financie</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+       
+    <div class="conteudo">
+        <h1>Consulte aqui nossos imóveis!</h1>
+       
+        <div class="container secao-filtros">
+            <h4 class="mb-4 text-center">Filtrar Imóveis</h4>
+            <form id="formFiltros">
+                <div class="row g-3">
+                    <div class="col-md-4 col-sm-6">
+                        <label for="tipoImovel" class="form-label">Tipo de Imóvel</label>
+                        <select class="form-select" id="tipoImovel">
+                            <option selected value="">Todos</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="terreno">Terreno</option>
+                            <option value="chacara">Chácara</option>
+                            <option value="comercial">Comercial</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label for="numQuartos" class="form-label">Quartos</label>
+                        <input type="number" class="form-control" id="numQuartos" min="0" placeholder="Min.">
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label for="numBanheiros" class="form-label">Banheiros</label>
+                        <input type="number" class="form-control" id="numBanheiros" min="0" placeholder="Min.">
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label for="numVagas" class="form-label">Vagas</label>
+                        <input type="number" class="form-control" id="numVagas" min="0" placeholder="Min.">
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label for="estadoImovel" class="form-label">Estado</label>
+                        <select class="form-select" id="estadoImovel">
+                            <option value="">Todos</option>
+                            <option value="disponivel">Disponível</option>
+                            <option value="vendido">Vendido</option>
+                            <option value="aluguel">Aluguel</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2">
+                    <div class="col-md-3 col-sm-6">
+                        <label for="precoMin" class="form-label">Preço Min</label>
+                        <input type="number" class="form-control" id="precoMin" placeholder="R$">
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <label for="precoMax" class="form-label">Preço Max</label>
+                        <input type="number" class="form-control" id="precoMax" placeholder="R$">
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <label for="areaMin" class="form-label">Área Min</label>
+                        <input type="number" class="form-control" id="areaMin" placeholder="m²">
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <label for="areaMax" class="form-label">Área Max</label>
+                        <input type="number" class="form-control" id="areaMax" placeholder="m²">
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success me-2">Filtrar</button>
+                    <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="linha" id="listaImoveis">
+        </div>
+
+        <button class="btn-ver-mais" id="btnVerMais">Ver Mais</button>
+    </div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <img id="modalImage" src="" alt="Imagem do Imóvel">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const formFiltros = document.getElementById('formFiltros');
+    const campoBusca = document.getElementById('campo-busca');
+    const imoveis = Array.from(document.querySelectorAll('.imoveis'));
+    const btnVerMais = document.getElementById('btnVerMais');
+    let itensVisiveis = 6;
+
+    function atualizarVisibilidade() {
+        const tipo = document.getElementById('tipoImovel').value.toLowerCase();
+        const quartos = document.getElementById('numQuartos').value;
+        const banheiros = document.getElementById('numBanheiros').value;
+        const vagas = document.getElementById('numVagas').value;
+        const estado = document.getElementById('estadoImovel').value.toLowerCase();
+        const precoMin = document.getElementById('precoMin').value;
+        const precoMax = document.getElementById('precoMax').value;
+        const areaMin = document.getElementById('areaMin').value;
+        const areaMax = document.getElementById('areaMax').value;
+        const busca = campoBusca.value.toLowerCase();
+        let cont = 0;
+        imoveis.forEach(imovel => {
+            const imovelTipo = imovel.dataset.tipo.toLowerCase();
+            const imovelQuartos = parseInt(imovel.dataset.quartos) || 0;
+            const imovelBanheiros = parseInt(imovel.dataset.banheiros) || 0;
+            const imovelVagas = isNaN(parseInt(imovel.dataset.vagas)) ? 0 : parseInt(imovel.dataset.vagas);
+            const imovelEstado = imovel.dataset.estado ? imovel.dataset.estado.toLowerCase() : '';
+            const imovelPreco = parseFloat(imovel.dataset.preco);
+            const imovelArea = parseFloat(imovel.dataset.area);
+            const titulo = imovel.querySelector('h5').textContent.toLowerCase();
+            let mostrar = true;
+            if (tipo && tipo !== imovelTipo) mostrar = false;
+            if (quartos && imovelQuartos < parseInt(quartos)) mostrar = false;
+            if (banheiros && imovelBanheiros < parseInt(banheiros)) mostrar = false;
+            if (vagas && imovelVagas < parseInt(vagas)) mostrar = false;
+            if (estado && estado !== imovelEstado) mostrar = false;
+            if (precoMin && imovelPreco < parseFloat(precoMin)) mostrar = false;
+            if (precoMax && imovelPreco > parseFloat(precoMax)) mostrar = false;
+            if (areaMin && imovelArea < parseFloat(areaMin)) mostrar = false;
+            if (areaMax && imovelArea > parseFloat(areaMax)) mostrar = false;
+            if (busca && !titulo.includes(busca)) mostrar = false;
+            if (mostrar && cont < itensVisiveis) {
+                imovel.style.display = 'flex';
+                cont++;
+            } else {
+                imovel.style.display = 'none';
+            }
+        });
+        btnVerMais.style.display = imoveis.filter(i => i.style.display === 'none').length > 0 ? 'block' : 'none';
+    }
+
+    formFiltros.addEventListener('submit', e => {
+        e.preventDefault();
+        itensVisiveis = 6;
+        atualizarVisibilidade();
+    });
+
+    formFiltros.addEventListener('reset', () => {
+        setTimeout(() => {
+            itensVisiveis = 6;
+            campoBusca.value = '';
+            atualizarVisibilidade();
+        }, 0);
+    });
+
+    campoBusca.addEventListener('input', () => {
+        itensVisiveis = 6;
+        atualizarVisibilidade();
+    });
+
+    const modalImage = document.getElementById('modalImage');
+    const modal = document.getElementById('imageModal');
+    imoveis.forEach(imovel => {
+        const img = imovel.querySelector('.imoveis-img');
+        img.addEventListener('click', () => {
+            modalImage.src = img.dataset.bsSrc;
+        });
+    });
+
+    btnVerMais.addEventListener('click', () => {
+        itensVisiveis += 6;
+        atualizarVisibilidade();
+    });
+
+    atualizarVisibilidade();
+});
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeo5F5gJ92nVUGwQkg3cG/SPr4Uq6x4t4c+Qp1Z7W+7CM9" crossorigin="anonymous"></script>
+</body>
+</html>
