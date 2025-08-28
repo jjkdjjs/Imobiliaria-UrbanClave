@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanClave</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  background-color: #204E4A;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+
+.banner * {
+  background-color: transparent;
+}
+
+
+.banner {
+  background-image: url("imagens/imagem1.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 0 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  height: 60vw;
+  color: white;
+  position: relative;
+  text-align: center;
+  flex-direction: column;
+}
+
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+
+.banner > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+.text-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  line-height: 1.5;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+
+.botao1 {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #303030;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+
+.botao1:hover {
+  background-color: #414141;
+}
+
+
+.barra {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 170px;
+  z-index: 10;
+}
+
+
+.barra ul {
+  list-style: none;
+  display: flex;
+  gap: clamp(10px, 3vw, 40px);
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  padding: 0;
+  margin: 0;
+}
+
+
+.barra a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: sans-serif;
+  transition: 0.2s;
+}
+
+
+.barra a:hover{
+  background-color: #f1f5f9;
+  color:black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+.secao-filtros {
+  background-color: #F6F8FF;
+  padding: 40px 5%;
+  margin: 0 auto;
+  max-width: 1200px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: -80px;
+  position: relative;
+  z-index: 5;
+}
+
+
+.secao-filtros h4 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+
+.secao-filtros .form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+
+.secao-filtros .form-control,
+.secao-filtros .form-select {
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ced4da;
+}
+
+
+.secao-filtros .text-center button {
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+
+.me-2 {
+  background-color: #2E933C;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+
+.me-2:hover {
+  background-color: #297045;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.btn-outline-secondary {
+  transition: all 0.3s ease;
+  border: 1px solid #d3d3d3;
+  color: #414141;
+  background-color: #ffffff;
+}
+
+
+.btn-outline-secondary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.secao-destaques {
+  background-color: #F6F8FF;
+  padding: 100px 5% 60px;
+  font-family: 'Poppins', sans-serif;
+  color: #204E4A;
+}
+
+
+.container-destaques {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+.bloco-destaque {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 30px;
+  flex: 1 1 30%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+
+.bloco-destaque:hover {
+  transform: translateY(-5px);
+}
+
+
+.bloco-destaque h2 {
+  color: #81C14B;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+
+.bloco-destaque h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #297045;
+  background-color: transparent;
+}
+
+
+.bloco-destaque p {
+  font-size: 1rem;
+  color: #204E4A;
+  line-height: 1.6;
+  background-color: transparent;
+}
+
+
+.estatisticas {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 60px 5%;
+  background-color: #F6F8FF;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 40px;
+}
+
+
+.estatisticas .item h2 {
+  font-size: 3rem;
+  color: #2E933C;
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+
+
+.estatisticas .item p {
+  font-size: 1.1rem;
+  color: #204E4A;
+  font-style: italic;
+  background-color: transparent;
+}
+
+
+.conteudo-adicional {
+  background-color: #F6F8FF;
+  padding: 80px 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+
+.conteudo-adicional h2 {
+  color: #297045;
+  margin-bottom: 20px;
+}
+
+
+.conteudo-adicional .lead {
+  color: #204E4A;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+
+.conteudo-adicional .btn-outline-success {
+  color: #2E933C;
+  border-color: #2E933C;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+
+.conteudo-adicional .btn-outline-success:hover {
+  background-color: #2E933C;
+  color: #F6F8FF;
+}
+
+
+#contato {
+  background-color: #F6F8FF;
+  padding: 100px 20px 80px;
+  color: #204E4A;
+  font-family: "Segoe UI", sans-serif;
+  margin-top: 60px;
+}
+
+
+#contato .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+.info-contato {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 60px;
+  background-color: transparent;
+}
+
+
+.info-contato .col {
+  flex: 1;
+  min-width: 280px;
+  background-color: transparent;
+}
+
+
+.info-contato h3 {
+  color: #297045;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  position: relative;
+  background-color: transparent;
+}
+
+
+.info-contato h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: #81C14B;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+
+.info-contato p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #204E4A;
+  opacity: 0.9;
+  margin-bottom: 8px;
+  background-color: transparent;
+}
+
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+  background-color: transparent;
+}
+
+
+.social-links a {
+  color: unset;
+  text-decoration: none;
+}
+
+
+.social-links a img {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+
+.social-links a img:hover {
+  transform: scale(1.1);
+}
+
+
+.social-links a i {
+  font-size: 2.2rem;
+  transition: transform 0.3s ease;
+}
+
+
+.social-links a i:hover {
+  transform: scale(1.1);
+}
+
+
+.formulario-contato {
+  text-align: center;
+  background-color: transparent;
+}
+
+
+.formulario-contato h3 {
+  font-size: 1.6rem;
+  color: #297045;
+  margin-bottom: 30px;
+  position: relative;
+  background-color: transparent;
+}
+
+
+.formulario-contato h3::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #81C14B;
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+
+.formulario-contato form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+
+.formulario-contato .form-group {
+  margin-bottom: 25px;
+  background-color: transparent;
+}
+
+
+.formulario-contato .form-label {
+  font-weight: 600;
+  color: #204E4A;
+  margin-bottom: 8px;
+  display: block;
+  background-color: transparent;
+}
+
+
+.formulario-contato .form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #204E4A;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.formulario-contato .form-control::placeholder {
+  color: #6c757d;
+  opacity: 0.7;
+}
+
+
+.formulario-contato .form-control:focus {
+  border-color: #81C14B;
+  box-shadow: 0 0 0 0.25rem rgba(129, 193, 75, 0.25);
+  outline: none;
+}
+
+
+.formulario-contato .btn-primary {
+  background-color: #2E933C;
+  border: none;
+  color: #F6F8FF;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.formulario-contato .btn-primary:hover {
+  background-color: #297045;
+}
+
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  background-color: #ffffff !important;
+  color: #204E4A !important;
+  transition: background-color 0s ease-in-out 0s;
+}
+
+
+footer {
+  background-color: #204E4A;
+  color: #F6F8FF;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  margin-top: 80px;
+}
+
+
+footer p {
+  background-color: transparent;
+}
+
+
+@media (max-width: 992px) {
+  .secao-filtros {
+    margin-top: -60px;
+    padding: 30px 3%;
+  }
+  .secao-destaques {
+    padding: 80px 3% 50px;
+  }
+  .estatisticas {
+    gap: 30px;
+  }
+  .info-contato, .formulario-contato form {
+    padding: 25px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .banner {
+    height: 80vw;
+    min-height: 400px;
+  }
+  .barra {
+    top: 100px;
+  }
+  .secao-filtros {
+    margin-top: -40px;
+    padding: 30px 20px;
+  }
+  .secao-filtros h4 {
+    font-size: 1.5rem;
+  }
+  .secao-filtros .row > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .secao-filtros .row > div + div {
+    margin-top: 15px;
+  }
+  .secao-filtros .text-center button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .container-destaques {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+  .bloco-destaque {
+    flex: 1 1 100%;
+  }
+  .estatisticas {
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+  .estatisticas .item h2 {
+    font-size: 2.5rem;
+  }
+  .conteudo-adicional {
+    padding: 60px 20px;
+  }
+  #contato {
+    padding: 80px 20px 60px;
+  }
+  .formulario-contato form {
+    padding: 25px 20px;
+  }
+  .formulario-contato .btn-primary {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .banner {
+    min-height: 300px;
+  }
+  .text-banner h1 {
+    font-size: 1.8rem;
+  }
+  .barra ul {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  .barra a {
+    padding: 10px;
+  }
+  .secao-filtros {
+    padding: 20px 15px;
+  }
+  .secao-destaques {
+    padding: 60px 15px 40px;
+  }
+  .bloco-destaque {
+    padding: 20px;
+  }
+  .estatisticas {
+    gap: 20px;
+    padding: 30px 15px;
+  }
+  .estatisticas .item h2 {
+    font-size: 2rem;
+  }
+  .conteudo-adicional {
+    padding: 40px 15px;
+  }
+  #contato {
+    padding: 60px 15px 40px;
+  }
+  .formulario-contato form {
+    padding: 25px 20px;
+  }
+  .formulario-contato .btn-primary {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+</style>
+<body>
+  <header>
+    <div class="banner">
+      <nav class="barra">
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#">Lançamentos</a></li>
+          <li><a href="#">Negocie seu imóvel</a></li>
+          <li><a href="#contato">Contate-nos</a></li>
+        </ul>
+      </nav>
+      <div class="text-banner">
+        <h1>Imóveis <br>selecionados a dedo</h1>
+        <button class="botao1">IMÓVEIS DISPONÍVEIS</button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="secao-filtros">
+      <h4 class="mb-4">Filtrar Imóveis</h4>
+      <form id="formFiltros">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-2">
+            <label for="tipoImovel" class="form-label">Tipo de Imóvel</label>
+            <select class="form-select" id="tipoImovel">
+              <option selected value="">Todos</option>
+              <option value="casa">Casa</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="terreno">Terreno</option>
+              <option value="chacara">Chácara</option>
+              <option value="comercial">Comercial</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <label for="numQuartos" class="form-label">Quartos</label>
+            <input type="number" class="form-control" id="numQuartos" min="0" placeholder="Min.">
+          </div>
+          <div class="col-md-2">
+            <label for="estadoImovel" class="form-label">Negócio</label>
+            <select class="form-select" id="estadoImovel">
+              <option selected value="">Todos</option>
+              <option value="novo">Comprar</option>
+              <option value="usado">Alugar</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="precoMin" class="form-label">Preço Mín.</label>
+            <input type="text" class="form-control" id="precoMin" placeholder="R$ 0,00">
+          </div>
+          <div class="col-md-2">
+            <label for="precoMax" class="form-label">Preço Máx.</label>
+            <input type="text" class="form-control" id="precoMax" placeholder="R$ 0,00">
+          </div>
+          <div class="col-md-2">
+            <label for="cidade" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="cidade" placeholder="Ex: Rodeio">
+          </div>
+          <div class="col-md-1">
+            <label for="estado" class="form-label">UF</label>
+            <input type="text" class="form-control" id="estado" placeholder="SC">
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <button type="submit" class="me-2">Aplicar Filtros</button>
+          <button type="reset" class="btn-outline-secondary">Limpar Filtros</button>
+        </div>
+      </form>
+    </section>
+
+
+    <section class="secao-destaques">
+      <div class="container-destaques" id="inicio">
+        <div class="bloco-destaque">
+          <h2>PRIMEIRO</h2>
+          <h3>Encontre o imóvel ideal, sem complicações</h3>
+          <p>
+            Descubra uma ampla variedade de imóveis prontos para morar ou investir, de forma rápida e descomplicada.
+            Casas, apartamentos e terrenos selecionados com critérios rigorosos para garantir sua tranquilidade.
+            Aqui você encontra opções acessíveis, seguras e com apoio especializado do início ao fim da sua jornada.
+            Viva a experiência de comprar com confiança e praticidade.
+          </p>
+        </div>
+        <div class="bloco-destaque">
+          <h2>SEM MENCIONAR</h2>
+          <h3>Alugue com facilidade e total transparência</h3>
+          <p>
+            Se você busca praticidade na hora de alugar um imóvel, está no lugar certo.
+            Esqueça a burocracia e conte com um atendimento ágil, contratos claros e imóveis prontos para morar.
+            Do agendamento da visita à entrega das chaves, cuidamos de tudo para você.
+            Alugue seu novo lar ou ponto comercial com quem entende do assunto.
+          </p>
+        </div>
+        <div class="bloco-destaque">
+          <h2>E NÃO VAMOS ESQUECER</h2>
+          <h3>Seu novo lar pode estar a um clique de distância</h3>
+          <p>
+            A gente sabe que encontrar o imóvel certo pode ser cansativo.
+            Por isso, reunimos em um só lugar diversas opções que combinam com seu estilo de vida e orçamento.
+            Nosso time está pronto para te ajudar em cada etapa, com suporte humanizado e soluções inteligentes.
+            Encontre agora o imóvel que você sempre quis — com segurança, agilidade e confiança.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="estatisticas">
+      <div class="item">
+        <h2 class="contador" data-target="1850">0</h2>
+        <p>Ofertas Feitas</p>
+      </div>
+      <div class="item">
+        <h2 class="contador porcentagem" data-target="100">0</h2>
+        <p>Clientes satisfeitos</p>
+      </div>
+      <div class="item">
+        <h2 class="contador" data-target="200">0</h2>
+        <p>Negócios Fechados</p>
+      </div>
+    </section>
+    <section id="contato" class="barra-inferior">
+  <div class="container">
+    <div class="row info-contato">
+      <div class="col">
+        <h3>Fale Conosco</h3>
+        <p>(47) 99999-9999</p>
+        <p>contato@urbanclave.com.br</p>
+        <p>Rua Imóvel Perfeito, 123 - Centro, Blumenau - SC</p>
+      </div>
+      <div class="col">
+        <h3>Horário de Atendimento</h3>
+        <p>Segunda a Sexta: 08:00 - 18:00</p>
+        <p>Sábado: 09:00 - 13:00 (somente agendamento)</p>
+        <p>Domingo: Fechado</p>
+      </div>
+      <div class="col">
+        <h3>Siga-nos</h3>
+        <p>Conecte-se conosco nas redes sociais:</p>
+        <div class="social-links">
+    <a href="https://www.instagram.com/" target="_blank">
+        <img src="https://img.icons8.com/?size=100&id=32323&format=png&color=000000" alt="Ícone do Instagram" class="social-icon-img">
+    </a>
+
+
+    <a href="https://www.facebook.com/" target="_blank">
+        <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Ícone do facebook" class="social-icon-img">
+    </a>
+
+
+    <a href="https://web.whatsapp.com/" target="_blank">
+        <img src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000" alt="Ícone do whatsapp" class="social-icon-img">
+    </a>
+</div>
+      </div>
+    </div>
+
+
+    <div class="formulario-contato">
+      <h3>Envie uma Mensagem</h3>
+      <form>
+        <div class="form-group">
+          <label for="nome" class="form-label">Nome Completo</label>
+          <input type="text" class="form-control" id="nome" placeholder="Seu nome">
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com">
+        </div>
+        <div class="form-group">
+          <label for="mensagem" class="form-label">Sua Mensagem</label>
+          <textarea class="form-control" id="mensagem" rows="4" placeholder="Escreva sua mensagem aqui..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+  <script>
+    const campoBusca = document.getElementById("campo-busca");
+    const formFiltros = document.getElementById("formFiltros");
+    const linhasImoveis = document.querySelectorAll(".linha"); 
+    const btnVerMais = document.getElementById("btnVerMais"); 
+
+
+    const precoMinFormatter = new Cleave('#precoMin', {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand',
+      numeralDecimalMark: ',',
+      delimiter: '.',
+      numeralDecimalScale: 2
+    });
+
+
+    const precoMaxFormatter = new Cleave('#precoMax', {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand',
+      numeralDecimalMark: ',',
+      delimiter: '.',
+      numeralDecimalScale: 2
+    });
+
+    const linhasPorPagina = 2;
+    let paginaAtual = 1;
+
+
+    function mostrarEsconderLinhas() {
+      linhasImoveis.forEach((linha, index) => {
+        linha.style.display = index < paginaAtual * linhasPorPagina ? "flex" : "none";
+      });
+
+
+      if (btnVerMais) {
+        btnVerMais.style.display = (paginaAtual * linhasPorPagina >= linhasImoveis.length) ? "none" : "block";
+      }
+    }
+
+
+    function carregarMaisImoveis() {
+      paginaAtual++;
+      mostrarEsconderLinhas();
+      aplicarFiltros();
+    }
+
+
+    function aplicarFiltros() {
+      const termoBusca = campoBusca?.value.toLowerCase().trim() || "";
+
+
+      const tipoImovel = document.getElementById("tipoImovel").value;
+      const numQuartos = parseInt(document.getElementById("numQuartos").value);
+      const estadoImovel = document.getElementById("estadoImovel").value;
+      const cidade = document.getElementById("cidade")?.value.toLowerCase().trim() || "";
+      const estado = document.getElementById("estado")?.value.toLowerCase().trim() || "";
+
+
+      const precoMin = parseFloat(precoMinFormatter.getRawValue().replace(',', '.')) || 0;
+      const precoMax = parseFloat(precoMaxFormatter.getRawValue().replace(',', '.')) || Infinity;
+
+
+      document.querySelectorAll(".imoveis").forEach((card) => { 
+        const titulo = card.querySelector("h5")?.innerText.toLowerCase() || "";
+        const local = card.querySelector(".info")?.innerText.toLowerCase() || "";
+
+
+        const cardTipo = card.dataset.tipo || "";
+        const cardPreco = parseFloat(card.dataset.preco) || 0;
+        const cardQuartos = parseInt(card.dataset.quartos) || 0;
+        const cardEstado = (card.dataset.estado || "").toLowerCase();
+        const cardCidade = (card.dataset.cidade || "").toLowerCase();
+
+
+        let visivel = true;
+
+
+        if (termoBusca && !(titulo.includes(termoBusca) || local.includes(termoBusca))) visivel = false;
+        if (tipoImovel && cardTipo !== tipoImovel) visivel = false;
+        if (!isNaN(numQuartos) && cardQuartos < numQuartos) visivel = false;
+        if (!isNaN(precoMin) && cardPreco < precoMin) visivel = false;
+        if (!isNaN(precoMax) && cardPreco > precoMax) visivel = false;
+        if (estadoImovel && cardEstado !== estadoImovel) visivel = false;
+        if (cidade && !cardCidade.includes(cidade)) visivel = false;
+        if (estado && cardEstado !== estado) visivel = false;
+
+
+        card.style.display = visivel ? "flex" : "none";
+      });
+    }
+
+    function iniciarContadores() {
+      const contadores = document.querySelectorAll('.contador');
+
+
+      contadores.forEach(contador => {
+        const alvo = +contador.getAttribute('data-target');
+        const isPercentual = contador.classList.contains('porcentagem');
+        let valorAtual = 0;
+
+
+        const atualizar = () => {
+          const incremento = Math.ceil(alvo / 100);
+
+
+          if (valorAtual < alvo) {
+            valorAtual += incremento;
+            if (valorAtual > alvo) valorAtual = alvo;
+
+
+            contador.innerText = isPercentual
+              ? `${valorAtual}%`
+              : valorAtual.toLocaleString('pt-BR');
+
+
+            setTimeout(atualizar, 20);
+          } else {
+        
+            contador.innerText = isPercentual
+              ? `${alvo}%`
+              : alvo.toLocaleString('pt-BR');
+          }
+        };
+        atualizar();
+      });
+    }
+
+
+    btnVerMais?.addEventListener("click", carregarMaisImoveis);
+    campoBusca?.addEventListener("keyup", aplicarFiltros);
+
+
+    formFiltros.addEventListener("submit", function (event) {
+      event.preventDefault();
+      paginaAtual = 1;
+      mostrarEsconderLinhas();
+      aplicarFiltros();
+    });
+
+
+    formFiltros.addEventListener("reset", function () {
+      setTimeout(() => {
+      
+        document.getElementById("cidade").value = "";
+        document.getElementById("estado").value = "";
+
+
+        precoMinFormatter.setRawValue("");
+        precoMaxFormatter.setRawValue("");
+
+
+        paginaAtual = 1;
+        mostrarEsconderLinhas();
+        aplicarFiltros();
+      }, 50);
+    });
+    const imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+      imageModal.addEventListener('show.bs.modal', event => {
+        const button = event.relatedTarget;
+        const imageUrl = button.getAttribute('data-bs-src');
+        const modalImage = imageModal.querySelector('#modalImage');
+        modalImage.src = imageUrl;
+      });
+    }
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+      mostrarEsconderLinhas();
+      aplicarFiltros();
+      iniciarContadores();
+    });
+  </script>
+  <footer>
+    <p>&copy; 2025 - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
