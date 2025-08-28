@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanClave: Nossa Essência | Inovação e Confiança</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #F6F8FF; 
+      color: #333; 
+      line-height: 1.6;
+      overflow-x: hidden; 
+      scroll-behavior: smooth; 
+    }
+
+    .color-primary-green { color: #2E933C; }
+    .color-dark-green { color: #204E4A; }
+    .bg-primary-green { background-color: #2E933C; }
+    .bg-dark-green { background-color: #204E4A; }
+    .bg-light-green { background-color: #EAF4EA; }
+    .bg-white { background-color: #fff; }
+    .shadow-light { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .shadow-medium { box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+
+    .hero-section {
+      background: linear-gradient(135deg, #204E4A 0%, #2E933C 100%);
+      color: #fff;
+      padding: 8rem 2rem;
+      text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-section p {
+      font-size: 1.3rem;
+      max-width: 750px;
+      margin: 0.5rem auto 2rem auto;
+      opacity: 0.9;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: #fff;
+      color: #2E933C;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .hero-cta:hover {
+      background: #EAF4EA;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .main-wrapper {
+      max-width: 1100px;
+      margin: -60px auto 4rem auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-block {
+      background: #fff;
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .section-block:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.18);
+    }
+    .section-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #204E4A;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+    .section-block p {
+      font-size: 1.1rem;
+      color: #555;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #EAF4EA;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3.5rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-item:nth-child(odd) { 
+        justify-content: flex-start;
+    }
+    .timeline-item:nth-child(even) { 
+      flex-direction: row-reverse;
+      justify-content: flex-start; 
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      width: 22px; 
+      height: 22px;
+      background: #2E933C;
+      border: 4px solid #ffffff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      z-index: 3;
+      box-shadow: 0 0 0 5px rgba(46, 147, 60, 0.1);
+    }
+    .timeline-content {
+      width: 45%;
+      background: #FCFCFC;
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: background 0.3s ease;
+    }
+    .timeline-content:hover {
+      background: #F0F5F0;
+    }
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: 5%;
+      text-align: right;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 5%;
+      text-align: left;
+    }
+    .timeline-content h3 {
+      font-size: 1.6rem;
+      color: #204E4A;
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+    }
+    .timeline-content p {
+      font-size: 1rem;
+      color: #666;
+      text-align: inherit;
+    }
+
+    .features-values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature-value-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+    .feature-value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .feature-value-card i {
+      color: #2E933C;
+      font-size: 2.8rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .feature-value-card h3 {
+      margin: 0.5rem 0;
+      color: #204E4A;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .feature-value-card p {
+      color: #666;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .cta-section {
+      background: #2E933C;
+      color: #fff;
+      text-align: center;
+      padding: 5rem 2rem;
+      border-radius: 20px;
+      margin-bottom: 4rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 10px 30px rgba(46,147,60,0.3);
+    }
+    .cta-section h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    }
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      opacity: .95;
+    }
+
+    footer.footer {
+      background: #204E4A;
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.95rem;
+    }
+    footer.footer a {
+      color: #fff;
+      margin: 0 .7rem;
+      text-decoration: none;
+      transition: color .3s ease;
+    }
+    footer.footer a:hover {
+      color: #2E933C;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section h1 { font-size: 3rem; }
+      .hero-section p { font-size: 1.1rem; }
+      .section-block h2 { font-size: 2.5rem; }
+      .timeline-content { width: 48%; }
+      .timeline-item:nth-child(odd) .timeline-content { margin-right: 2%; }
+      .timeline-item:nth-child(even) .timeline-content { margin-left: 2%; }
+      .features-values-grid { gap: 1.5rem; }
+      .feature-value-card { padding: 1.8rem; }
+      .feature-value-card h3 { font-size: 1.4rem; }
+      .cta-section h2 { font-size: 2.5rem; }
+      .cta-section p { font-size: 1.1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section { padding: 6rem 1rem; }
+      .hero-section h1 { font-size: 2.5rem; }
+      .hero-section p { font-size: 1rem; }
+      .main-wrapper { margin: -40px auto 2rem auto; padding: 0 1rem; }
+      .section-block { padding: 2rem 1.5rem; margin-bottom: 3rem; }
+      .section-block h2 { font-size: 2rem; margin-bottom: 1rem; }
+      .section-block p { font-size: 1rem; }
+      .timeline { padding: 0; margin-top: 1rem; }
+      .timeline::before { display: none; }
+      .timeline-item {
+        flex-direction: column !important;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+      }
+      .timeline-dot {
+        position: static;
+        transform: none;
+        margin-right: 15px;
+        order: -1;
+      }
+      .timeline-content {
+        width: 100%;
+        margin: 0;
+        text-align: left !important;
+        padding: 1.2rem;
+      }
+      .timeline-content h3 {
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .timeline-content p { font-size: 0.9rem; }
+      .features-values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .feature-value-card { padding: 1.5rem; }
+      .feature-value-card h3 { font-size: 1.3rem; }
+      .feature-value-card i { font-size: 2.2rem; }
+      .cta-section { padding: 3rem 1.5rem; }
+      .cta-section h2 { font-size: 2rem; }
+      .cta-section p { font-size: 1rem; }
+      .cta-button { padding: 0.8rem 2rem; font-size: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section h1 { font-size: 2rem; }
+      .hero-section p { font-size: 0.9rem; }
+      .section-block h2 { font-size: 1.8rem; }
+      .cta-section h2 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero-section">
+    <h1>UrbanClave: Construindo o Futuro do Imóvel</h1>
+    <p>Mais do que uma plataforma, somos a ponte entre seus sonhos e a chave do seu novo lar.</p>
+    <a href="#a-nossa-jornada" class="hero-cta">Descubra Quem Somos</a>
+  </header>
+
+  <main class="main-wrapper">
+    <section id="a-nossa-jornada" class="section-block">
+      <h2>Nossa Jornada</h2>
+      <p>Desde a nossa fundação em <strong>2008</strong>, a UrbanClave tem se dedicado a revolucionar o mercado imobiliário. Veja como crescemos e o que nos impulsiona:</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2008: O Início do Sonro</h3>
+            <p>Fundação com a visão de desburocratizar o acesso a imóveis, com plataforma intuitiva e centrada no usuário.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2015: Expansão da Plataforma</h3>
+            <p>Lançamento de novas funcionalidades, como busca avançada e ferramentas de análise de mercado, ampliando nossa oferta de valor.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2020: Foco em Conexão Humana</h3>
+            <p>Iniciamos a integração de suporte consultivo especializado, reconhecendo a importância do toque humano na jornada imobiliária.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Hoje: Construindo o Futuro</h3>
+            <p>Continuamos inovando, buscando soluções inteligentes e sustentáveis para conectar pessoas aos seus lares e investimentos ideais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Nossa Essência</h2>
+      <p>Nossa missão e visão guiam cada passo da UrbanClave, refletindo nosso compromisso com você.</p>
+      <div class="features-values-grid">
+        <div class="feature-value-card">
+          <i class="fas fa-bullseye"></i>
+          <h3>Missão</h3>
+          <p>Transformar a experiência imobiliária, tornando a busca, venda e aluguel de imóveis mais intuitiva, segura e eficiente.</p>
+        </div>
+        <div class="feature-value-card">
+          <i class="fas fa-eye"></i>
+          <h3>Visão</h3>
+          <p>Ser a plataforma imobiliária de referência no Brasil, reconhecida pela inovação contínua e excelência.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>O Que Nos Torna Únicos</h2>
+      <div class="features-values-grid">
+        <div class="feature-value-card">
+          <i class="fas fa-rocket"></i>
+          <h3>Inovação Constante</h3>
+          <p>Investimos em tecnologia de ponta para oferecer a você as melhores ferramentas e funcionalidades, sempre atualizadas.</p>
+        </div>
+        <div class="feature-value-card">
+          <i class="fas fa-lock"></i>
+          <h3>Segurança & Transparência</h3>
+          <p>Sua segurança é nossa prioridade. Garantimos clareza e proteção em todas as etapas da sua negociação.</p>
+        </div>
+        <div class="feature-value-card">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h3>Foco no Cliente</h3>
+          <p>Entendemos suas necessidades e oferecemos suporte personalizado para garantir sua satisfação total.</p>
+        </div>
+        <div class="feature-value-card">
+          <i class="fas fa-hands-helping"></i>
+          <h3>Parceria & Conexão</h3>
+          <p>Criamos pontes entre proprietários e interessados, simplificando a busca e a concretização de sonhos.</p>
+        </div>
+        <div class="feature-value-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Inteligência de Mercado</h3>
+          <p>Análises de dados e tendências para te ajudar a tomar as melhores decisões imobiliárias.</p>
+        </div>
+        <div class="feature-value-card">
+          <i class="fas fa-leaf"></i>
+          <h3>Sustentabilidade</h3>
+          <p>Compromisso com práticas e imóveis que respeitam o meio ambiente e o futuro.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta-section">
+    <h2>Pronto para Anunciar Seu Imóvel?</h2>
+    <p>Seja para anunciar, encontrar seu lar ou investir, a UrbanClave é a sua chave para o sucesso no mercado imobiliário.</p>
+    <a href="negocie_imovel.html" class="cta-button">Anuncie Seu
